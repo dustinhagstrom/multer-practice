@@ -3,7 +3,6 @@ import "./App.css";
 import Picture from "../Picture/Picture";
 
 function App() {
-    const [count, setCount] = useState(0);
 
     return (
         <>

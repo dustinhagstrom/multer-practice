@@ -8,7 +8,35 @@ const upload = multer({ storage: multer.memoryStorage() });
 // 1. local file system of app
 // 2. disk of the local machine
 // 3. memory of the local machine, TEMPORARILY before storing somewhere else
-//    like a DB 
+//    like a DB
+
+// GET ALL IMAGES
+router.get("/", async (req, res) => {
+    const queryText = `SELECT * FROM "image";`;
+
+    try {
+        const dbRes = await pool.query(queryText);
+        res.status(200).send(dbRes.rows);
+    } catch (err) {
+        console.error("Error with the Get all images route:", err);
+        res.sendStatus(500);
+    }
+});
+
+// GET IMAGE BY ID
+router.get("/:id", async (req, res) => {
+    const { id } = req.params;
+
+    const queryText = `SELECT * FROM "image" WHERE id = $1;`;
+
+    try {
+        const dbRes = await pool.query(queryText, [id]);
+        res.status(200).send(dbRes.rows);
+    } catch (err) {
+        console.error("Error with the Get all images route:", err);
+        res.sendStatus(500);
+    }
+});
 
 /**
  * POST route synchronous
