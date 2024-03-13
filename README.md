@@ -56,8 +56,6 @@ The React component `Picture` handles the image upload functionality. Users can 
 
 Upon submitting an image to the DB, the preview is removed from the DOM. Upon successfully storing the image in the Database, we make an api call to grab an image by id; this example file is hardcoded for ID = 1, but this could be made into a dynamic value (probably based on a user ID).
 
-We are just storing the image on 
-
 ### Image Uploading
 
 The image is uploaded through a POST request handled by the Express router in `server/routes/pics.router.js`. The multer library is used for handling multipart/form-data, which includes the image. The image is temporarily stored in memory before being saved to the PostgreSQL database.
